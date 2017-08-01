@@ -1,0 +1,15 @@
+FROM httpd:2.2
+
+ARG CUWA_VERSION=2.3.0.238
+
+RUN \
+  apt-get update && \
+  apt-get install -y gcc libkrb5-dev libssl-dev make patch && \
+  apt-get clean
+
+RUN mkdir /root/cuwa-build
+
+COPY cuwal-src/ /root/cuwa-build/
+
+WORKDIR /root/cuwa-build
+RUN /root/cuwa-build/cuwal-build.sh
