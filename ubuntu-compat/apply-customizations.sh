@@ -47,7 +47,15 @@ cp -p ${BASEDIR}/helper-utils/a2enmod /usr/sbin/
 for I in a2dismod a2dissite a2ensite; do
     ln -s /usr/sbin/a2enmod /usr/sbin/${I}
 done
-	 
+
+for I in ab dbmmanage htdbm htdigest htpasswd logresolve; do
+    ln -s /usr/local/apache2/bin/${I} /usr/bin/${I}
+done
+
+for I in checkgid htcacheclean httxt2dbm rotatelogs; do
+    ln -s /usr/local/apache2/bin/${I} /usr/sbin/${I}
+done
+
 # Instead of linking, we'll pull in our copy of Ubuntu's apachectl script
 # to ensure the proper envvars logic is used.
 #ln -s /usr/local/apache2/bin/apachectl /usr/sbin/apache2ctl

@@ -19,7 +19,7 @@ The Apache configuration and management look-and-feel from Debian/Ubuntu has bee
 
 The version of `mod_cuwebauth` has been been updated to **2.3.0.238** at minimum.  This version was the released by CIT Identity Management in September, 2016 and has the latest support for Two-Step Login.  As they release new versions, we may opt to update the module included in this image.
 
-One component **missing from this image** is `mod_cgid`, since the official httpd:2.2 image does not include this module.
+Components **missing from this image** include `mod_cgid`, `/usr/sbin/check_forensic` and `/usr/sbin/split-logfile` since the official httpd:2.2 image does not include these items.
 
 
 # Building mod_cuwebauth
