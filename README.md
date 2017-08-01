@@ -9,6 +9,8 @@ This image is built using the same logic from [CU-CommunityApps/docker-apache24]
 
 The original `cs/apache22` image was based upon Ubuntu 12.04.5 LTS, which transitioned to [end-of-life support status in April, 2017](https://wiki.ubuntu.com/Releases).  In order to provide continued support for Apache 2.2, as long as the Apache Software Foundation is commited to maintaining that release series, we have changed the base image to the official httpd:2.2 from Docker Hub.  This image is based upon Debian 8.9 (Jessie), the LTS release of which is scheduled to be supported through June, 2020.
 
+The name of the running Apache binary has changed from `apache2` to `httpd`.  If you have scripting that interacts with the process directly instead of using `apache2ctl` (or `apachectl`), keep this in mind!
+
 You can expect minor versions of supporting binaries to change as a result of this re-base.  We have made every attempt to ensure similar functionality by incorporating many of our own changes from cs/apache22 into this Dockerfile and the supporting scripting.
 
 The Apache configuration and management look-and-feel from Debian/Ubuntu has been brought into this image by way of the scripting and files under `ubuntu-compat/`.  While none of this is _required_ to launch the official Apache 2.2 build from `/usr/local/apache2`, it may assist users who have built their Dockerfiles and/or customizations with the expectation that the Debian/Ubuntu method for configuring Apache will remain in place.
