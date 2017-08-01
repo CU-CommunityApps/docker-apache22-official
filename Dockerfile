@@ -9,6 +9,7 @@ RUN \
     curl \
     git \
     libkrb5-3 \
+    mime-support \
     openssh-client \
     ruby \
     unzip \

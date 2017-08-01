@@ -103,11 +103,13 @@ stop_htcacheclean() {
 	pkill -P 1 -f "htcacheclean.* -p$HTCACHECLEAN_PATH " 2> /dev/null || echo ...not running
 }
 
+# MODIFIED by sms249 from Ubuntu 12.04.5 default as the process is now 'httpd' instead of
+#   'apache2'.
 pidof_apache() {
 	# if there is actually an apache2 process whose pid is in PIDFILE,
 	# print it and return 0.
 	if [ -e "$PIDFILE" ]; then
-		if pidof apache2 | tr ' ' '\n' | grep -w $(cat $PIDFILE); then
+		if pidof httpd | tr ' ' '\n' | grep -w $(cat $PIDFILE); then
 			return 0
 		fi
 	fi
