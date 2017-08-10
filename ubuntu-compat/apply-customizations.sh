@@ -22,6 +22,7 @@ cp -p ${BASEDIR}/etc/apache2.init /etc/init.d/apache2
 cp -p ${BASEDIR}/etc/apache2.default /etc/default/apache2
 
 cp -rp ${BASEDIR}/apache2 /etc/
+mkdir /etc/apache2/mods-enabled /etc/apache2/sites-enabled
 cd /etc/apache2/mods-enabled
 for I in alias.conf alias.load auth_basic.load authn_file.load authz_default.load authz_groupfile.load authz_host.load authz_user.load autoindex.conf autoindex.load cuwebauth.load deflate.conf deflate.load dir.conf dir.load env.load log_config.load logio.load mime.conf mime.load negotiation.conf negotiation.load proxy.conf proxy.load proxy_http.load reqtimeout.conf reqtimeout.load rewrite.load setenvif.conf setenvif.load ssl.conf ssl.load status.conf status.load; do
     ln -s ../mods-available/${I}
