@@ -30,7 +30,6 @@ docker build \
 # Run basic test script against new image
 echo "Running basic test suite against new image"
 docker run \
-       -it \
        --rm \
        -v ${BASEDIR}/bin:/root/test-suite \
        ${DOCKER_IMG}:test-build \
