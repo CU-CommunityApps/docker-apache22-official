@@ -36,7 +36,8 @@ docker create \
 
 # Copy module from build container to the previously-determined base directory.
 echo Copying mod_cuwebauth.so to local lib/ directory.
-docker cp ${CONTAINER_NAME}:/usr/local/apache2/modules/mod_cuwebauth.so ${BASEDIR}lib/
+[[ ! -d ${BASEDIR}/lib ]] && mkdir ${BASEDIR}/lib
+docker cp ${CONTAINER_NAME}:/usr/local/apache2/modules/mod_cuwebauth.so ${BASEDIR}/lib/
 
 # Clean up
 echo Cleaning up build image and container.
