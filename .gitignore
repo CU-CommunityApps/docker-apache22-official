@@ -1,5 +1,6 @@
 *~
 \#*#
 .#*
-.swp
+.*.swp
+cuwal-src/cuwal*.tar.gz
 lib/
