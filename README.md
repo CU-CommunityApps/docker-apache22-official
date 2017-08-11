@@ -32,6 +32,21 @@ The included `bin/go.sh` script will run through building mod_cuwebauth.so, crea
 Prior to running `go.sh`, you need to obtain a copy of the CUWebAuth source code from Identity Management and place it in the `cuwal-src/` directory (ie: `cuwal-src/cuwal-${CUWA_VERSION}.tar.gz`).  
 
 
+# Test suite
+
+As part of running an image build via `bin/go.sh`, a series of quick validation tests are performed on the new image before exiting cleanly.  This is accomplished by giving the new image a specific tag (`:test-build`) and launching the image as a new Docker container so we can run `bin/run-tests.sh`.
+
+The tests performed in `bin/run-tests.sh` are fairly basic but include:
+
+ - Ensuring Apache can load `mod_cuwebauth.so`.
+ - Ensuring Apache fails to start with `mod_cuwebauth` in play but no proper configuration.
+ - Testing enabling and disabling Apache modules.
+ - Testing basic index page load.
+ - Verifying requests for CUWebAuth-secured content are being redirected to the weblogin servers.
+
+Any test failures should result in a non-zero exit from both `run-tests.sh` and `go.sh`.  By not tagging the image with the default `latest` indicator, any attempt to push the image downstream should fail (or result in a re-push of a previous version).  To be sure, always check the exit code from `go.sh` before moving on with your image publishing processes.
+
+
 # Building mod_cuwebauth
 
 When running `bin/go.sh`, we automatically attempt to build `lib/mod_cuwebauth.so` in the same environment used to run Apache.  Instead of baking a shared object file into this repository, we purposely take this step to ensure CUWebAuth is compiled natively in the environment as external dependencies change.  The `.gitignore` file is purposely ignoring everything unser `lib/`; we should **not** be distributing pre-compiled binaries or CUWebAuth sources with this repository!
