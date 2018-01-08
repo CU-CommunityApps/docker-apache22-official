@@ -46,6 +46,9 @@ RUN a2enmod \
   rewrite \
   ssl
 
+# Add test suite to image
+COPY bin/run-tests.sh /root/test-suite/
+
 # Environment setting from former cs/base12 Dockerfile
 ENV HOME /root
 WORKDIR /root
