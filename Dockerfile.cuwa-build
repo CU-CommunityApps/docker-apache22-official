@@ -4,7 +4,7 @@ ARG CUWA_VERSION=2.3.0.238
 
 RUN \
   apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y gcc libkrb5-dev libssl-dev make patch && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y gcc libkrb5-dev libssl-dev make patch autoconf && \
   apt-get clean
 
 RUN mkdir /root/cuwa-build
